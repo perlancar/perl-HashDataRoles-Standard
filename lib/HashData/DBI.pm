@@ -1,4 +1,4 @@
-package ArrayData::DBI;
+package HashData::DBI;
 
 # AUTHORITY
 # DATE
@@ -9,33 +9,35 @@ use strict;
 use warnings;
 
 use Role::Tiny::With;
-with 'ArrayDataRole::Source::DBI';
+with 'HashDataRole::Source::DBI';
 
 1;
-# ABSTRACT: Get array data from DBI
+# ABSTRACT: Get hash data from DBI
 
 =head1 SYNOPSIS
 
- use ArrayData::DBI;
+ use HashData::DBI;
 
- my $ary = ArrayData::DBI->new(
-     sth           => $dbh->prepare("SELECT foo FROM mytable"),
-     row_count_sth => $dbh->prepare("SELECT COUNT(*) FROM mytable"),
+ my $ary = HashData::DBI->new(
+     iterate_sth    => $dbh->prepare("SELECT mykey,myval FROM mytable"),
+     get_by_key_sth => $dbh->prepare("SELECT myval FROM mytable WHERE mykey=?"),
+     row_count_sth  => $dbh->prepare("SELECT COUNT(*) FROM mytable"),
  );
 
  # or
- my $ary = ArrayData::DBI->new(
+ my $ary = HashData::DBI->new(
      dsn           => "DBI:mysql:database=mydb",
      user          => "...",
      password      => "...",
      table         => "mytable",
-     column        => "mycolumn",
+     key_column    => "mykey",
+     val_column    => "myval",
  );
 
 
 =head1 DESCRIPTION
 
-This is an C<ArrayData::> module to get array elements from a L<DBI> query.
+This is an C<HashData::> module to get array elements from a L<DBI> query.
 
 
 =head1 SEE ALSO

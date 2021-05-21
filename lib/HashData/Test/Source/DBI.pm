@@ -1,15 +1,15 @@
-package ArrayData::Test::Source::DBI;
+package HashData::Test::Source::DBI;
 
 # AUTHORITY
 # DATE
 # DIST
 # VERSION
 
-use alias::module 'ArrayData::DBI';
+use alias::module 'HashData::DBI';
 
 1;
-# ABSTRACT: Alias package for ArrayData::DBI
+# ABSTRACT: Alias package for HashData::DBI
 
 =head1 SEE ALSO
 
-L<ArrayData::DBI>
+L<HashData::DBI>
