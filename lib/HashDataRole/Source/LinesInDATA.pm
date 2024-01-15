@@ -12,13 +12,14 @@ with 'HashDataRole::Spec::Basic';
 sub new {
     no strict 'refs';
 
-    my $class = shift;
+    my ($class, %args) = @_;
 
     my $fh = \*{"$class\::DATA"};
     my $fhpos_data_begin = tell $fh;
 
     bless {
         fh => $fh,
+        separator => $args{separator} // ':',
         fhpos_data_begin => $fhpos_data_begin,
         pos => 0, # iterator
     }, $class;
@@ -29,7 +30,7 @@ sub get_next_item {
     die "StopIteration" if eof($self->{fh});
     $self->{fhpos_cur_item} = tell($self->{fh});
     chomp(my $line = readline($self->{fh}));
-    my ($key, $value) = split /:/, $line, 2 or die "Invalid line at position $self->{pos}: no separator ':'";
+    my ($key, $value) = split /\Q$self->{separator}\E/, $line, 2 or die "Invalid line at position $self->{pos}: no separator ':'";
     $self->{pos}++;
     [$key, $value];
 }
@@ -143,7 +144,7 @@ sub get_all_keys {
     my ($self, $key) = @_;
 
     my $hash_cache = $self->_get_hash_cache;
-    @$hash_cache;
+    sort %$hash_cache;
 }
 
 
@@ -180,6 +181,18 @@ L<ArrayDataRole::Spec::Basic>
 
 
 =head1 PROVIDED METHODS
+
+=head2 new
+
+Constructor. Arguments:
+
+=over
+
+=item * separator
+
+Str. Separator character. Defaults to C<:> (colon).
+
+=back
 
 =head2 fh
 
