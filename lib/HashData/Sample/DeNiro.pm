@@ -1,10 +1,23 @@
-package HashData::Sample::DeNiro;
+package
+    HashDataRole::Sample::DeNiro;
 
 use 5.010001;
 use strict;
 use warnings;
 
 use Role::Tiny;
+
+around new => sub {
+    my $orig = shift;
+    $orig->(@_, separator => '::');
+};
+
+package HashData::Sample::DeNiro;
+
+use 5.010001;
+use strict;
+use warnings;
+
 use Role::Tiny::With;
 
 # AUTHORITY
@@ -13,11 +26,7 @@ use Role::Tiny::With;
 # VERSION
 
 with 'HashDataRole::Source::LinesInDATA';
-
-around new => sub {
-    my $orig = shift;
-    $orig->(@_, separator => '::');
-};
+with 'HashDataRole::Sample::DeNiro';
 
 1;
 # ABSTRACT: Movies of Robert De Niro with their year

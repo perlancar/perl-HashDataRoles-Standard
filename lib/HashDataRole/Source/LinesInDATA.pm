@@ -103,7 +103,7 @@ sub get_item_at_pos {
     my $oldfhpos = tell $self->{fh};
     seek $self->{fh}, $pos_cache->[$pos], 0;
     chomp(my $line = readline($self->{fh}));
-    my ($key, $value) = split /:/, $line, 2;
+    my ($key, $value) = split /\Q$self->{separator}\E/, $line, 2;
     seek $self->{fh}, $oldfhpos, 0;
     [$key, $value];
 }
@@ -128,7 +128,7 @@ sub get_item_at_key {
     my $oldfhpos = tell $self->{fh};
     seek $self->{fh}, $hash_cache->{$key}, 0;
     chomp(my $line = readline($self->{fh}));
-    my (undef, $value) = split /:/, $line, 2;
+    my (undef, $value) = split /\Q$self->{separator}\E/, $line, 2;
     seek $self->{fh}, $oldfhpos, 0;
     $value;
 }
