@@ -1,3 +1,4 @@
+## no critic: Modules::RequireFilenameMatchesPackage
 package
     HashDataRole::Sample::DeNiro;
 
