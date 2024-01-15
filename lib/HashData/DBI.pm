@@ -1,15 +1,15 @@
 package HashData::DBI;
 
-# AUTHORITY
-# DATE
-# DIST
-# VERSION
-
 use strict;
 use warnings;
 
 use Role::Tiny::With;
 with 'HashDataRole::Source::DBI';
+
+# AUTHORITY
+# DATE
+# DIST
+# VERSION
 
 1;
 # ABSTRACT: Get hash data from DBI

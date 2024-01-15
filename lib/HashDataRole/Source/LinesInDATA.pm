@@ -1,16 +1,16 @@
 package HashDataRole::Source::LinesInDATA;
 
+use Role::Tiny;
+use Role::Tiny::With;
+with 'HashDataRole::Spec::Basic';
+
 # AUTHORITY
 # DATE
 # DIST
 # VERSION
 
-use Role::Tiny;
-use Role::Tiny::With;
-with 'HashDataRole::Spec::Basic';
-
 sub new {
-    no strict 'refs';
+    no strict 'refs'; ## no critic: TestingAndDebugging::ProhibitNoStrict
 
     my ($class, %args) = @_;
 
@@ -52,7 +52,7 @@ sub reset_iterator {
 }
 
 sub _get_pos_cache {
-    no strict 'refs';
+    no strict 'refs'; ## no critic: TestingAndDebugging::ProhibitNoStrict
 
     my $self = shift;
 
@@ -72,7 +72,7 @@ sub _get_pos_cache {
 }
 
 sub _get_hash_cache {
-    no strict 'refs';
+    no strict 'refs'; ## no critic: TestingAndDebugging::ProhibitNoStrict
 
     my $self = shift;
 

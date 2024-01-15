@@ -1,15 +1,15 @@
 package HashData::Hash;
 
-# AUTHORITY
-# DATE
-# DIST
-# VERSION
-
 use strict;
 use warnings;
 
 use Role::Tiny::With;
 with 'HashDataRole::Source::Hash';
+
+# AUTHORITY
+# DATE
+# DIST
+# VERSION
 
 1;
 # ABSTRACT: Get hash data from Perl hash

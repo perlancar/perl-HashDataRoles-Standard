@@ -1,15 +1,16 @@
 package HashDataRole::Source::Array;
 
+use 5.010001;
+use Role::Tiny;
+use Role::Tiny::With;
+
+with 'HashDataRole::Spec::Basic';
+with 'Role::TinyCommons::Collection::GetItemByPos'; # bonus
+
 # AUTHORITY
 # DATE
 # DIST
 # VERSION
-
-use 5.010001;
-use Role::Tiny;
-use Role::Tiny::With;
-with 'HashDataRole::Spec::Basic';
-with 'Role::TinyCommons::Collection::GetItemByPos'; # bonus
 
 sub new {
     my ($class, %args) = @_;

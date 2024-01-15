@@ -1,3 +1,4 @@
+## no critic: TestingAndDebugging::RequireUseStrict
 package HashData::Test::Source::LinesInDATA;
 
 # AUTHORITY

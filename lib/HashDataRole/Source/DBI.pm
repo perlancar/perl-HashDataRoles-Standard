@@ -1,14 +1,14 @@
 package HashDataRole::Source::DBI;
 
-# AUTHORITY
-# DATE
-# DIST
-# VERSION
-
 use 5.010001;
 use Role::Tiny;
 use Role::Tiny::With;
 with 'HashDataRole::Spec::Basic';
+
+# AUTHORITY
+# DATE
+# DIST
+# VERSION
 
 sub new {
     my ($class, %args) = @_;
