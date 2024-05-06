@@ -15,7 +15,13 @@ sub new {
     my ($class, %args) = @_;
 
     my $fh = \*{"$class\::DATA"};
-    my $fhpos_data_begin = tell $fh;
+    my $fhpos_data_begin;
+    if (defined ${"$class\::_HashData_fhpos_data_begin_cache"}) {
+        $fhpos_data_begin = ${"$class\::_HashData_fhpos_data_begin_cache"};
+        seek $fh, $fhpos_data_begin, 0;
+    } else {
+        $fhpos_data_begin = ${"$class\::_HashData_fhpos_data_begin_cache"} = tell $fh;
+    }
 
     bless {
         fh => $fh,
